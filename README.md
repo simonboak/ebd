@@ -1,5 +1,5 @@
-# ebd
-**ebd:** Eight Bit Dump - A hexdump utility for 8 bit software development.
+# ebd: Eight Bit Dump
+**A hexdump utility for 8 bit software development.**
 
 An alternative to modern hexdump utilities, *ebd* is designed for anyone using modern systems to develop software for older 8 bit processors such as the 6502, Z80, etc.
 
