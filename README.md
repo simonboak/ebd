@@ -12,17 +12,23 @@ Written in Python 2.7 because that was just easier for now.
 ## Usage
 Just pass a file to *ebd* and you'll get a hexdump of it's contents:
 
+`ebd -f [filename]`
+
 <img width="682" alt="example-basic" src="https://user-images.githubusercontent.com/1146324/81479384-c5967b80-921a-11ea-9a31-c69430bee5fd.png">
 
 ### Custom starting address
 Use the `-a` parameter to pass a different starting address for the output (in decimal):
 
-<img width="682" alt="example-address" src="https://user-images.githubusercontent.com/1146324/81479389-cb8c5c80-921a-11ea-8139-d29368961658.png">
+`ebd -f [filename] -a [starting address]`
+
+<img width="682" alt="example-address" src="https://user-images.githubusercontent.com/1146324/81486076-47ea6400-924a-11ea-8c74-8ec3f0fc0fc7.png">
 
 ### Display ASCII text
 Add the `-d` flag to display the ASCII text column in the output:
 
-<img width="682" alt="example-ascii" src="https://user-images.githubusercontent.com/1146324/81479393-cdeeb680-921a-11ea-9be5-77a2ce433550.png">
+`ebd -f [filename] -d`
+
+<img width="682" alt="example-ascii" src="https://user-images.githubusercontent.com/1146324/81486080-50429f00-924a-11ea-985d-713b7207e64f.png">
 
 
 ## Installation
