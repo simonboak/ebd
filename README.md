@@ -29,8 +29,8 @@ Add the `-d` flag to display the ASCII text column in the output:
 
 You can either just call the Python script directly or you could follow something like this for installing on *nix systems:
 
-```chmod a+x ebd.py
-sudo cp ebd.py /usr/local/bin/ebd```
+``chmod a+x ebd.py
+sudo cp ebd.py /usr/local/bin/ebd``
 
 Now you can call `ebd [options]` from any directory on your system.
 
