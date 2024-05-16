@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""ebd: Eight Bit Dump - A hexdump utility for 8 bit software development
+"""ebd: Eight Bit Dump - A hexdump utility for 8 bit software development - For Python3
 
 http://github.com/simonboak/ebd
 
@@ -26,7 +26,6 @@ SOFTWARE.
 
 """
 
-from __future__ import print_function
 import argparse
 import binascii
 
@@ -62,7 +61,7 @@ while fileOpen:
             fileOpen = 0 # end of file reached
             break
         
-        print( binascii.b2a_hex( char ).upper(), end=' ' ) # convert byte to hex and in uppercase
+        print( binascii.b2a_hex( char.encode() ).decode().upper(), end=' ' ) # convert byte to hex and in uppercase
         
         if args['displayascii'] == True and len( char ) > 0:
             # If in printable ASCII range, then print the character, otherwise just a period

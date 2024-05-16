@@ -7,7 +7,7 @@ Its style is inspired by the Apple II system monitor program and outputs 8 bit b
 
 I basically failed in using format strings in *hexdump* which comes with macOS and decided it would be faster to write this little utility.
 
-Written in Python 2.7 because that was just easier for now.
+~~Written in Python 2.7 because that was just easier for now.~~ May 2024: 2 line code change for Python3
 
 ## Usage
 Just pass a file to *ebd* and you'll get a hexdump of it's contents:
