@@ -34,9 +34,10 @@ static void usage(const char *prog) {
     fprintf(stderr,
         "ebd: Eight Bit Dump - A hexdump utility for 8 bit software development\n"
         "http://github.com/simonboak/ebd - Version 2.0.0\n\n"
-        "Usage: %s [-a <address>] [-d] <file>\n\n"
+        "Usage: %s [-a <address>] [-d] [<file>]\n\n"
         "  -a <address>   Decimal starting address of output (default: 0)\n"
-        "  -d             Display ASCII characters to the right of output\n",
+        "  -d             Display ASCII characters to the right of output\n"
+        "  <file>         Input file (reads from stdin if omitted)\n",
         prog);
 }
 
@@ -63,16 +64,15 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (!filename) {
-        fprintf(stderr, "Error: no input file specified\n");
-        usage(argv[0]);
-        return 1;
-    }
-
-    FILE *fp = fopen(filename, "rb");
-    if (!fp) {
-        perror(filename);
-        return 1;
+    FILE *fp;
+    if (filename) {
+        fp = fopen(filename, "rb");
+        if (!fp) {
+            perror(filename);
+            return 1;
+        }
+    } else {
+        fp = stdin;
     }
 
     unsigned char row[BYTES_PER_ROW];
@@ -111,6 +111,7 @@ int main(int argc, char *argv[]) {
         if (row_len < BYTES_PER_ROW) break;
     }
 
-    fclose(fp);
+    if (filename)
+        fclose(fp);
     return 0;
 }
