@@ -34,8 +34,7 @@ static void usage(const char *prog) {
     fprintf(stderr,
         "ebd: Eight Bit Dump - A hexdump utility for 8 bit software development\n"
         "http://github.com/simonboak/ebd - Version 2.0.0\n\n"
-        "Usage: %s -f <file> [-a <address>] [-d]\n\n"
-        "  -f <file>      Input file to dump\n"
+        "Usage: %s [-a <address>] [-d] <file>\n\n"
         "  -a <address>   Decimal starting address of output (default: 0)\n"
         "  -d             Display ASCII characters to the right of output\n",
         prog);
@@ -47,10 +46,7 @@ int main(int argc, char *argv[]) {
     int display_ascii = 0;
 
     for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "-f") == 0 || strcmp(argv[i], "--file") == 0) {
-            if (++i >= argc) { fprintf(stderr, "Missing argument for -f\n"); return 1; }
-            filename = argv[i];
-        } else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--address") == 0) {
+        if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--address") == 0) {
             if (++i >= argc) { fprintf(stderr, "Missing argument for -a\n"); return 1; }
             byte_count = (unsigned int)atoi(argv[i]);
         } else if (strcmp(argv[i], "-d") == 0 || strcmp(argv[i], "--displayascii") == 0) {
@@ -58,6 +54,8 @@ int main(int argc, char *argv[]) {
         } else if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
             usage(argv[0]);
             return 0;
+        } else if (argv[i][0] != '-') {
+            filename = argv[i];
         } else {
             fprintf(stderr, "Unknown argument: %s\n", argv[i]);
             usage(argv[0]);
@@ -66,7 +64,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!filename) {
-        fprintf(stderr, "Error: -f <file> is required\n");
+        fprintf(stderr, "Error: no input file specified\n");
         usage(argv[0]);
         return 1;
     }
